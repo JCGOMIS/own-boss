@@ -4,6 +4,7 @@ import com.ownboss.own_boss.domain.Role;
 import com.ownboss.own_boss.domain.User;
 import com.ownboss.own_boss.dtos.CreateUserRequest;
 import com.ownboss.own_boss.dtos.UserResponse;
+import com.ownboss.own_boss.exceptions.UserNotFoundException;
 import com.ownboss.own_boss.mappers.UserMapper;
 import com.ownboss.own_boss.repositories.UserRepository;
 import com.ownboss.own_boss.service.UserService;
@@ -45,8 +46,7 @@ public class UserServiceImpl implements UserService {
     public UserResponse findUserByEmail(String email) {
 
         User user = repository.findByEmail(email)
-                .orElseThrow(()-> new RuntimeException("User not found"));
-
+                .orElseThrow(()-> new UserNotFoundException(email));
         return mapper.toDto(user);
     }
 }
