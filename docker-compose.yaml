@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16
+    container_name: ownboss-db
+    environment:
+      POSTGRES_DB: "own-boss"
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "Lys-Nayanka2019&"
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
