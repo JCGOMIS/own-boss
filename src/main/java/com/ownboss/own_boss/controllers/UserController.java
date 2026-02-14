@@ -4,6 +4,7 @@ import com.ownboss.own_boss.domain.User;
 import com.ownboss.own_boss.dtos.CreateUserRequest;
 import com.ownboss.own_boss.dtos.UserResponse;
 import com.ownboss.own_boss.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class UserController {
     }
     @PostMapping
 
-    public  ResponseEntity<UserResponse> createUser( @RequestBody CreateUserRequest request ){
+    public  ResponseEntity<UserResponse> createUser( @Valid @RequestBody CreateUserRequest request ){
 
     UserResponse createdUser = service.createUser(request);
 
